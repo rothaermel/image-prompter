@@ -102,7 +102,7 @@
 </template>
 
 <script>
-import { ref, computed, reactive, onMounted } from 'vue'
+import { ref, computed, reactive, onMounted, onUnmounted } from 'vue'
 import PromptForm from './components/PromptForm.vue'
 import PromptOutput from './components/PromptOutput.vue'
 import Settings from './components/Settings.vue'
@@ -120,7 +120,7 @@ export default {
     const currentView = ref('main') // 'main' or 'settings'
     
     // Theme management
-    const isDarkMode = ref(true) // Default to dark mode
+    const isDarkMode = ref(true) // Will be set from user or OS preference
     
     // Force reactivity trigger
     const optionsVersion = ref(0)
@@ -246,18 +246,22 @@ export default {
       window.open(chatGPTUrl, '_blank', 'noopener,noreferrer')
     }
 
-    const toggleTheme = () => {
-      isDarkMode.value = !isDarkMode.value
-      // Save theme preference to localStorage
-      localStorage.setItem('theme', isDarkMode.value ? 'dark' : 'light')
-      // Update document class for theme switching
-      if (isDarkMode.value) {
+    const applyTheme = (mode) => {
+      const isDark = mode === 'dark'
+      isDarkMode.value = isDark
+      if (isDark) {
         document.documentElement.classList.add('dark-theme')
         document.documentElement.classList.remove('light-theme')
       } else {
         document.documentElement.classList.add('light-theme')
         document.documentElement.classList.remove('dark-theme')
       }
+    }
+
+    const toggleTheme = () => {
+      const next = isDarkMode.value ? 'light' : 'dark'
+      applyTheme(next)
+      localStorage.setItem('theme', next)
     }
 
     // Navigation methods
@@ -273,12 +277,36 @@ export default {
 
     // Initialize theme on mount
     onMounted(() => {
-      // Load saved theme preference
       const savedTheme = localStorage.getItem('theme')
-      if (savedTheme) {
-        isDarkMode.value = savedTheme === 'dark'
+      if (savedTheme === 'dark' || savedTheme === 'light') {
+        applyTheme(savedTheme)
+      } else {
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        applyTheme(prefersDark ? 'dark' : 'light')
       }
-      toggleTheme() // Set initial theme
+
+      // Update to OS theme changes only if user hasn't set a preference
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+      const handleSystemThemeChange = (e) => {
+        const userSet = localStorage.getItem('theme')
+        if (!userSet) {
+          applyTheme(e.matches ? 'dark' : 'light')
+        }
+      }
+      try {
+        mediaQuery.addEventListener('change', handleSystemThemeChange)
+      } catch {
+        // Safari fallback
+        mediaQuery.addListener(handleSystemThemeChange)
+      }
+
+      onUnmounted(() => {
+        try {
+          mediaQuery.removeEventListener('change', handleSystemThemeChange)
+        } catch {
+          mediaQuery.removeListener(handleSystemThemeChange)
+        }
+      })
     })
 
     return {
@@ -297,6 +325,7 @@ export default {
       selectPrompt,
       openChatGPT,
       toggleTheme,
+      applyTheme,
       goToSettings,
       goToMainView
     }
