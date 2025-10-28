@@ -1,0 +1,48 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="240" fill="white" stroke="black" stroke-width="8"/>
+  
+  <!-- Camera body -->
+  <rect x="180" y="200" width="152" height="112" rx="8" fill="black"/>
+  
+  <!-- Camera lens -->
+  <circle cx="256" cy="256" r="40" fill="white" stroke="black" stroke-width="4"/>
+  
+  <!-- Lens inner circle -->
+  <circle cx="256" cy="256" r="28" fill="black"/>
+  
+  <!-- Lens highlight -->
+  <circle cx="248" cy="248" r="8" fill="white" opacity="0.7"/>
+  
+  <!-- Camera flash -->
+  <rect x="300" y="180" width="16" height="12" rx="2" fill="black"/>
+  
+  <!-- Viewfinder -->
+  <rect x="196" y="180" width="20" height="16" rx="2" fill="black"/>
+  
+  <!-- Camera strap attachment -->
+  <rect x="180" y="200" width="8" height="20" fill="black"/>
+  <rect x="324" y="200" width="8" height="20" fill="black"/>
+  
+  <!-- Magic wand/sparkle elements -->
+  <g opacity="0.8">
+    <!-- Sparkle 1 -->
+    <path d="M120 120 L130 120 L125 110 L130 120 L125 130 Z" fill="black"/>
+    <path d="M125 110 L125 130 M120 120 L130 120" stroke="black" stroke-width="1"/>
+    
+    <!-- Sparkle 2 -->
+    <path d="M380 140 L390 140 L385 130 L390 140 L385 150 Z" fill="black"/>
+    <path d="M385 130 L385 150 M380 140 L390 140" stroke="black" stroke-width="1"/>
+    
+    <!-- Sparkle 3 -->
+    <path d="M140 380 L150 380 L145 370 L150 380 L145 390 Z" fill="black"/>
+    <path d="M145 370 L145 390 M140 380 L150 380" stroke="black" stroke-width="1"/>
+    
+    <!-- Sparkle 4 -->
+    <path d="M360 360 L370 360 L365 350 L370 360 L365 370 Z" fill="black"/>
+    <path d="M365 350 L365 370 M360 360 L370 360" stroke="black" stroke-width="1"/>
+  </g>
+  
+  <!-- Text "AI" in small font -->
+  <text x="256" y="380" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="black">AI</text>
+</svg>
