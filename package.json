@@ -16,7 +16,8 @@
     "electron:build:mac": "npm run build && electron-builder --mac",
     "electron:build:linux": "npm run build && electron-builder --linux",
     "electron:dist": "npm run build && electron-builder --publish=never",
-    "electron:pack": "npm run build && electron-builder --dir"
+    "electron:pack": "npm run build && electron-builder --dir",
+    "build:icons": "node electron/scripts/build-icons.js"
   },
   "dependencies": {
     "bootstrap": "^5.3.2",
@@ -37,17 +38,17 @@
   "build": {
     "appId": "com.imagepromptbuilder.app",
     "productName": "Image Prompt Builder",
-    "icon": "assets/icons/icon.png",
+    "icon": "electron/electron-assets/icons/icon.png",
     "directories": {
-      "output": "dist-electron"
+      "output": "electron/dist-electron"
     },
     "files": [
       "dist/**/*",
       "electron/**/*",
-      "node_modules/**/*"
+      "!electron/dist-electron{,/**}"
     ],
     "mac": {
-      "icon": "assets/icons/icon.icns",
+      "icon": "electron/electron-assets/icons/icon.icns",
       "category": "public.app-category.productivity",
       "target": [
         {
@@ -67,7 +68,7 @@
       ]
     },
     "win": {
-      "icon": "assets/icons/icon.ico",
+      "icon": "electron/electron-assets/icons/icon.ico",
       "target": [
         {
           "target": "nsis",

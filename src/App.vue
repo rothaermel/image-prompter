@@ -91,6 +91,9 @@
           <!-- Footer -->
           <footer class="mt-5 text-muted small">
             Built for image generation · Tip: Use <code>Harmonize</code> for coherent combos, <code>Randomize</code> for exploration.
+            <br>
+          <!-- INSERT_YOUR_CODE -->
+          <a href="https://github.com/rothaermel/image-prompter.git" target="_blank">Project GitHub Repository</a>
           </footer>
         </div>
       </div>

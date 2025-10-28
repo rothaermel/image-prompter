@@ -39,7 +39,7 @@ async function createWindow() {
       enableRemoteModule: false,
       webSecurity: true
     },
-    // icon: path.join(__dirname, '../assets/icon.png'), // Optional: add an icon
+    icon: path.join(__dirname, './electron-assets/icons/icon.png'),
     titleBarStyle: process.platform === 'darwin' ? 'hiddenInset' : 'default',
     show: false // Don't show until ready
   })
