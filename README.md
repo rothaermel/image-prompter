@@ -22,19 +22,18 @@ A Vue.js application for building image generation prompts with a beautiful, res
 
 ### Prerequisites
 
-- Node.js (version 16 or higher)
-- npm or yarn
+- Bun (latest version)
 
 ### Installation
 
 1. Install dependencies:
 ```bash
-npm install
+bun install
 ```
 
 2. Start the development server:
 ```bash
-npm run dev
+bun run dev
 ```
 
 3. Open your browser and navigate to `http://localhost:3000`
@@ -42,7 +41,7 @@ npm run dev
 ### Build for Production
 
 ```bash
-npm run build
+bun run build
 ```
 
 The built files will be in the `dist` directory.
@@ -50,7 +49,7 @@ The built files will be in the `dist` directory.
 ### Preview Production Build
 
 ```bash
-npm run preview
+bun run preview
 ```
 
 ## Project Structure
@@ -117,17 +116,17 @@ $secondary: #your-color;
 ## Development Scripts
 
 ### Web Development
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
+- `bun run dev` - Start development server
+- `bun run build` - Build for production
+- `bun run preview` - Preview production build
 
 ### Electron Desktop App
-- `npm run electron:dev` - Start Electron in development mode
-- `npm run electron:build` - Build Electron app for current platform
-- `npm run electron:build:win` - Build for Windows
-- `npm run electron:build:mac` - Build for macOS
-- `npm run electron:build:linux` - Build for Linux
-- `npm run electron:dist` - Build for all platforms
+- `bun run electron:dev` - Start Electron in development mode
+- `bun run electron:build` - Build Electron app for current platform
+- `bun run electron:build:win` - Build for Windows
+- `bun run electron:build:mac` - Build for macOS
+- `bun run electron:build:linux` - Build for Linux
+- `bun run electron:dist` - Build for all platforms
 
 ## Desktop App (Electron)
 
