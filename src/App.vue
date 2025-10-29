@@ -200,6 +200,8 @@ export default {
       return generatePrompt(formData)
     })
 
+    // (status bar removed)
+
     // Methods
     const updateFormData = (newData) => {
       Object.assign(formData, newData)
